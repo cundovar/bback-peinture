@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription admin{% endblock %}
+
+{% block body %}
+<main class="auth-page">
+    <section class="auth-card">
+        <h1>Inscription</h1>
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.name) }}
+            {{ form_row(registrationForm.plainPassword) }}
+
+            <button type="submit">Creer le compte</button>
+        {{ form_end(registrationForm) }}
+
+        <p><a href="{{ path('app_login') }}">Deja inscrit ? Connexion</a></p>
+    </section>
+</main>
+{% endblock %}

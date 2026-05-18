@@ -21,6 +21,11 @@ class PageAccueil
     #[Groups(['page_accueil:read'])]
     private ?int $id = null;
 
+    public function __toString(): string
+    {
+        return 'Page accueil #'.($this->id ?? 'nouvelle');
+    }
+
     #[ORM\Column(length: 500, nullable: true)]
     #[Groups(['page_accueil:read', 'page_accueil:write'])]
     private ?string $texte = null;

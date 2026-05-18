@@ -38,6 +38,11 @@ class Categorie
         $this->oeuvres = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->name ?? 'Categorie';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

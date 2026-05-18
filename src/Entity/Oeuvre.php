@@ -93,6 +93,11 @@ class Oeuvre
         $this->likes = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->name ?? 'Oeuvre';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

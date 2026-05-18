@@ -33,6 +33,11 @@ class Like
     #[Groups(['like:read'])]
     private ?int $id = null;
 
+    public function __toString(): string
+    {
+        return 'Like #'.($this->id ?? 'nouveau');
+    }
+
     #[ORM\Column(nullable: true)]
     #[Groups(['like:read', 'like:write'])]
     private ?int $count = null;

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion admin{% endblock %}
+
+{% block body %}
+<main class="auth-page">
+    <form method="post" class="auth-card">
+        <h1>Connexion</h1>
+
+        {% if error %}
+            <p class="auth-error">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+        {% endif %}
+
+        {% if app.user %}
+            <p>Connecte avec {{ app.user.userIdentifier }}. <a href="{{ path('app_logout') }}">Deconnexion</a></p>
+        {% endif %}
+
+        <label for="username">Email</label>
+        <input type="email" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" name="_password" id="password" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button type="submit">Se connecter</button>
+        <p><a href="{{ path('app_register') }}">Creer un compte</a></p>
+    </form>
+</main>
+{% endblock %}
