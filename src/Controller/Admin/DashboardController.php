@@ -2,12 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Categorie;
-use App\Entity\Like;
-use App\Entity\Oeuvre;
-use App\Entity\PageAccueil;
-use App\Entity\Theme;
-use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -31,12 +25,12 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Tableau de bord', 'fa fa-home');
-        yield MenuItem::linkToCrud('Oeuvres', 'fa fa-palette', Oeuvre::class);
-        yield MenuItem::linkToCrud('Categories', 'fa fa-folder', Categorie::class);
-        yield MenuItem::linkToCrud('Themes', 'fa fa-tags', Theme::class);
-        yield MenuItem::linkToCrud('Accueil', 'fa fa-image', PageAccueil::class);
-        yield MenuItem::linkToCrud('Likes', 'fa fa-heart', Like::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-user', User::class);
+        yield MenuItem::linkTo(OeuvreCrudController::class, 'Oeuvres', 'fa fa-palette');
+        yield MenuItem::linkTo(CategorieCrudController::class, 'Categories', 'fa fa-folder');
+        yield MenuItem::linkTo(ThemeCrudController::class, 'Themes', 'fa fa-tags');
+        yield MenuItem::linkTo(PageAccueilCrudController::class, 'Accueil', 'fa fa-image');
+        yield MenuItem::linkTo(LikeCrudController::class, 'Likes', 'fa fa-heart');
+        yield MenuItem::linkTo(UserCrudController::class, 'Utilisateurs', 'fa fa-user');
         yield MenuItem::linkToLogout('Deconnexion', 'fa fa-sign-out');
     }
 }
